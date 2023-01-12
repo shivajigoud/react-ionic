@@ -18,6 +18,8 @@ import {
   IonIcon,
   IonRadio,
   IonRadioGroup,
+  IonSelect,
+  IonSelectOption,
 } from '@ionic/react';
 
 export default function UserForm({ name, email, gender, status, id }) {
@@ -58,7 +60,7 @@ export default function UserForm({ name, email, gender, status, id }) {
               id="name"
               name="name"
               value={user.name}
-              onIonChange={handleChange}
+              onIonChange={(e) => handleChange(e)}
               placeholder="Name"
             ></IonInput>
           </IonItem>
@@ -68,44 +70,49 @@ export default function UserForm({ name, email, gender, status, id }) {
               id="email"
               name="email"
               value={user.email}
-              onIonChange={handleChange}
+              onIonChange={(e) => handleChange(e)}
               placeholder="Email"
             ></IonInput>
           </IonItem>
-
-          <IonRadioGroup
-            allow-empty-selection={true}
-            value={user.gender ? user.gender : 'male'}
-            onIonChange={(e) => handleChange(e)}
-          >
-            <IonItem>
-              <IonLabel>Male</IonLabel>
-              <IonRadio
-                value="male"
-                // checked={user.gender === 'male'}
-                slot="send"
-              ></IonRadio>
-            </IonItem>
-            <IonItem>
-              <IonLabel>Female</IonLabel>
-              <IonRadio
-                value="female"
-                // checked={user.gender === 'female'}
-                slot="send"
-              ></IonRadio>
-            </IonItem>
-          </IonRadioGroup>
-
-          <label htmlFor="status">Status</label>
-          <select
-            id="status"
-            name="status"
-            value={user.status}
-            onChange={handleChange}
-          >
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
+          <IonItem>
+            <IonLabel>Gender</IonLabel>
+            <IonRadioGroup
+              allow-empty-selection={true}
+              value={user.gender ? user.gender : 'male'}
+              onIonChange={(e) => handleChange(e)}
+              name="gender"
+            >
+              <IonItem>
+                <IonLabel>Male</IonLabel>
+                <IonRadio
+                  value="male"
+                  // checked={user.gender === 'male'}
+                  slot="end"
+                ></IonRadio>
+              </IonItem>
+              <IonItem>
+                <IonLabel>Female</IonLabel>
+                <IonRadio
+                  value="female"
+                  // checked={user.gender === 'female'}
+                  slot="end"
+                ></IonRadio>
+              </IonItem>
+            </IonRadioGroup>
+          </IonItem>
+          <IonItem>
+            <IonLabel>Status</IonLabel>
+            <IonSelect
+              placeholder="Select fruit"
+              onIonChange={(e) => handleChange(e)}
+              onIonCancel={(e) => handleChange(e)}
+              onIonDismiss={(e) => handleChange(e)}
+              name="status"
+            >
+              <IonSelectOption value="active">Active</IonSelectOption>
+              <IonSelectOption value="inactive">Inactive</IonSelectOption>
+            </IonSelect>
+          </IonItem>
           <IonButton expand="block">
             {formState}
             {formState == 'Save' ? (
