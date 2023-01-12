@@ -44,7 +44,10 @@ export default function UserForm({ name, email, gender, status, id }) {
     if (formState.toUpperCase() == 'SAVE') {
       dispatch({ type: UPDATE_USER, payLoad: user });
       navigate('/');
-    } else dispatch({ type: CREATE_USER, payLoad: user });
+    } else {
+      dispatch({ type: CREATE_USER, payLoad: user });
+      navigate('/');
+    }
   };
   useEffect(() => {
     if (name) setState({ ...user, name, email, gender, status, id });
@@ -103,7 +106,7 @@ export default function UserForm({ name, email, gender, status, id }) {
           <IonItem>
             <IonLabel>Status</IonLabel>
             <IonSelect
-              placeholder="Select fruit"
+              placeholder="Select Status"
               onIonChange={(e) => handleChange(e)}
               onIonCancel={(e) => handleChange(e)}
               onIonDismiss={(e) => handleChange(e)}

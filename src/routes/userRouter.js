@@ -8,17 +8,17 @@ const router = createBrowserRouter([
     path: '/',
     element: (
       <div className="container">
-        <AddUser></AddUser>
-        {/* <UserTable></UserTable> */}
+        {/* <AddUser></AddUser> */}
+        <UserTable></UserTable>
       </div>
     ),
   },
   {
-    path: '/users',
+    path: '/addUser',
     element: (
       <div className="container">
-        {/* <AddUser></AddUser> */}
-        <UserTable></UserTable>
+        <AddUser></AddUser>
+        {/* <UserTable></UserTable> */}
       </div>
     ),
   },

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FETCH_ALL_USERS, DELETE_USER } from '../actions/actions';
 import useForm from '../hooks/useForm';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   IonCard,
   IonCardHeader,
@@ -31,7 +31,12 @@ export default function UserTable() {
   }, []);
   return (
     <div className="user_table">
-      <h5>App Users</h5>
+      <h5>
+        App Users{' '}
+        <Link to="/addUser" className="ion-text-right">
+          Add User
+        </Link>
+      </h5>
       {error.error && <h6 className="error user_error">{error.error}</h6>}
       {usersList &&
         usersList.length > 0 &&
