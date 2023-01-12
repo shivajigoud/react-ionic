@@ -25,6 +25,7 @@ import {
 export default function UserForm({ name, email, gender, status, id }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [pageTitle, setPageTitle] = useState('Add User');
   const [user, setState] = useState({
     name: '',
     email: '',
@@ -50,11 +51,14 @@ export default function UserForm({ name, email, gender, status, id }) {
     }
   };
   useEffect(() => {
-    if (name) setState({ ...user, name, email, gender, status, id });
+    if (name) {
+      setState({ ...user, name, email, gender, status, id });
+      setPageTitle(`Editing ${name}`);
+    }
   }, [name]);
   return (
     <IonCard>
-      <IonCardHeader>Add User</IonCardHeader>
+      <IonCardHeader>{pageTitle}</IonCardHeader>
       <IonCardContent>
         <form onSubmit={userSubmitHandler}>
           <IonItem>
@@ -111,12 +115,13 @@ export default function UserForm({ name, email, gender, status, id }) {
               onIonCancel={(e) => handleChange(e)}
               onIonDismiss={(e) => handleChange(e)}
               name="status"
+              value={user.gender && user.gender}
             >
               <IonSelectOption value="active">Active</IonSelectOption>
               <IonSelectOption value="inactive">Inactive</IonSelectOption>
             </IonSelect>
           </IonItem>
-          <IonButton expand="block">
+          <IonButton expand="block" type="submit">
             {formState}
             {formState == 'Save' ? (
               <IonIcon icon={create} slot="end"></IonIcon>

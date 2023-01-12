@@ -24,7 +24,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/editUser/:id',
-    element: <EditUser></EditUser>,
+    element: (
+      <div className="container">
+        <EditUser></EditUser>
+      </div>
+    ),
   },
 ]);
 export default router;
