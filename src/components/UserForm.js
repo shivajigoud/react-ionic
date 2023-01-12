@@ -52,8 +52,8 @@ export default function UserForm({ name, email, gender, status, id }) {
   };
   useEffect(() => {
     if (name) {
-      setState({ ...user, name, email, gender, status, id });
-      // setPageTitle(`Editing ${name}`);
+      setState({ name, email, gender, status, id });
+      setPageTitle(`Editing ${name}`);
     }
   }, [name]);
   return (
@@ -111,11 +111,11 @@ export default function UserForm({ name, email, gender, status, id }) {
             <IonLabel>Status</IonLabel>
             <IonSelect
               placeholder="Select Status"
-              onIonChange={(e) => handleChange(e)}
+              // onIonChange={(e) => handleChange(e)}
               onIonCancel={(e) => handleChange(e)}
               onIonDismiss={(e) => handleChange(e)}
               name="status"
-              value={user.gender && user.gender}
+              value={user.status}
             >
               <IonSelectOption value="active">Active</IonSelectOption>
               <IonSelectOption value="inactive">Inactive</IonSelectOption>
