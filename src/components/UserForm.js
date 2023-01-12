@@ -84,8 +84,7 @@ export default function UserForm({ name, email, gender, status, id }) {
           <IonItem>
             <IonLabel>Gender</IonLabel>
             <IonRadioGroup
-              allow-empty-selection={true}
-              value={user.gender ? user.gender : 'male'}
+              value={user.gender}
               onIonChange={(e) => handleChange(e)}
               name="gender"
             >
