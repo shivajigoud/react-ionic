@@ -9,6 +9,15 @@ const router = createBrowserRouter([
     element: (
       <div className="container">
         <AddUser></AddUser>
+        {/* <UserTable></UserTable> */}
+      </div>
+    ),
+  },
+  {
+    path: '/users',
+    element: (
+      <div className="container">
+        {/* <AddUser></AddUser> */}
         <UserTable></UserTable>
       </div>
     ),

@@ -3,6 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FETCH_ALL_USERS, DELETE_USER } from '../actions/actions';
 import useForm from '../hooks/useForm';
 import { useNavigate } from 'react-router-dom';
+import {
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonCardSubtitle,
+  IonButton,
+} from '@ionic/react';
 export default function UserTable() {
   const users = useSelector((state) => state.users);
   const usersList = Object.entries(users);
@@ -23,9 +31,39 @@ export default function UserTable() {
   }, []);
   return (
     <div className="user_table">
-      <h1>User Table</h1>
-      {error.error && <h2 className="error user_error">{error.error}</h2>}
-      <table>
+      <h5>App Users</h5>
+      {error.error && <h6 className="error user_error">{error.error}</h6>}
+      {usersList &&
+        usersList.length > 0 &&
+        usersList.map((data, i) => {
+          const [userkey, userData] = [...data];
+          return (
+            <IonCard key={`user${userkey}`}>
+              <IonCardHeader>
+                <IonCardTitle>{userData.name}</IonCardTitle>
+                <IonCardSubtitle class="ion-text-wrap">
+                  {userData.email}
+                </IonCardSubtitle>
+              </IonCardHeader>
+
+              <IonCardContent>
+                <p>Gender: {userData.gender}</p>
+                <p>Status: {userData.status}</p>
+                <IonButton onClick={(e) => editUser(e, userkey)}>
+                  Edit
+                </IonButton>
+                <IonButton
+                  color="danger"
+                  onClick={(e) => deleteUser(e, userkey)}
+                >
+                  Delete
+                </IonButton>
+              </IonCardContent>
+            </IonCard>
+          );
+        })}
+
+      {/* <table>
         <thead>
           <tr>
             <td>Name</td>
@@ -37,29 +75,9 @@ export default function UserTable() {
           </tr>
         </thead>
         <tbody>
-          {usersList &&
-            usersList.length > 0 &&
-            usersList.map((data, i) => {
-              const [userkey, userData] = [...data];
-              return (
-                <tr key={`user${userkey}`}>
-                  <td>{userData.name}</td>
-                  <td>{userData.email}</td>
-                  <td>{userData.gender}</td>
-                  <td>{userData.status}</td>
-                  <td>
-                    <button onClick={(e) => editUser(e, userkey)}>Edit</button>
-                  </td>
-                  <td>
-                    <button onClick={(e) => deleteUser(e, userkey)}>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
+          
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 }
