@@ -53,7 +53,7 @@ export default function UserForm({ name, email, gender, status, id }) {
   useEffect(() => {
     if (name) {
       setState({ ...user, name, email, gender, status, id });
-      setPageTitle(`Editing ${name}`);
+      // setPageTitle(`Editing ${name}`);
     }
   }, [name]);
   return (
