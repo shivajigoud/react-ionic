@@ -30,7 +30,7 @@ export default function App() {
     <IonApp>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>{TOPHEADER}</IonTitle>
+          <IonTitle className="ion-text-center">{TOPHEADER}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">

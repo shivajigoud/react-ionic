@@ -4,7 +4,10 @@ import { CREATE_USER, UPDATE_USER } from '../actions/actions';
 import useForm from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-export default function UserForm({ name, email, gender, status, id, ...rest }) {
+export default function UserForm(
+  { name, email, gender, status, id },
+  { children }
+) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setState] = useState({
@@ -33,7 +36,7 @@ export default function UserForm({ name, email, gender, status, id, ...rest }) {
   }, [name]);
   return (
     <div className="user_form">
-      <h1>Create new user</h1>
+      <h1>{children}</h1>
       <form onSubmit={userSubmitHandler}>
         <label htmlFor="name">Name</label>
         <input

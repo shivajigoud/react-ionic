@@ -11,7 +11,7 @@ export default function AddUser() {
   const [currentUser, setCurrentUser] = useState();
   const { formState, setFormState } = useForm();
   const dispatch = useDispatch();
-
+  const pageTitle = `Editing ${currentUser["name"]}`
   useEffect(() => {
     if (formState.toUpperCase() == 'SAVE' && id) {
       // dispatch({ type: FETCH_USER, payLoad: id });
@@ -26,5 +26,5 @@ export default function AddUser() {
       setFormState('Submit');
     };
   }, []);
-  return <UserForm {...currentUser}></UserForm>;
+  return <UserForm {...currentUser,pageTitle}></UserForm>;
 }
