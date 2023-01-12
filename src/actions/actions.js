@@ -1,0 +1,11 @@
+export const FETCH_ALL_USERS = 'FETCH_ALL_USERS';
+export const FETCH_USER = 'FETCH_USER';
+export const CREATE_USER = 'CREATE_USER';
+export const UPDATE_USER = 'UPDATE_USER';
+export const DELETE_USER = 'DELETE_USER';
+export const PUT_FETCH_ALL_USERS = 'PUT_FETCH_ALL_USERS';
+export const PUT_FETCH_USER = 'PUT_FETCH_USER';
+export const PUT_CREATE_USER = 'PUT_CREATE_USER';
+export const PUT_UPDATE_USER = 'PUT_UPDATE_USER';
+export const PUT_DELETE_USER = 'PUT_DELETE_USER';
+export const PUT_ERROR = 'PUT_ERROR';
