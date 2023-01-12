@@ -9,6 +9,8 @@ import {
   IonContent,
   IonToolbar,
   IonTitle,
+  IonButtons,
+  IonMenuButton,
 } from '@ionic/react';
 import '@ionic/react/css/core.css';
 import '@ionic/react/css/normalize.css';
@@ -30,7 +32,7 @@ export default function App() {
     <IonApp>
       <IonMenu contentId="main-content">
         <IonHeader>
-          <IonToolbar>
+          <IonToolbar color="tertiary">
             <IonTitle>Menu Content</IonTitle>
           </IonToolbar>
         </IonHeader>
@@ -41,6 +43,9 @@ export default function App() {
       <IonPage>
         <IonHeader>
           <IonToolbar>
+            <IonButtons slot="start">
+              <IonMenuButton></IonMenuButton>
+            </IonButtons>
             <IonTitle className="ion-text-center">{TOPHEADER}</IonTitle>
           </IonToolbar>
         </IonHeader>
