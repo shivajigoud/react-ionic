@@ -4,6 +4,22 @@ import { CREATE_USER, UPDATE_USER } from '../actions/actions';
 import useForm from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { create, send } from 'ionicons/icons';
+import {
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonCardSubtitle,
+  IonButton,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonIcon,
+  IonRadio,
+  IonRadioGroup,
+} from '@ionic/react';
+
 export default function UserForm(
   { name, email, gender, status, id },
   { children }
@@ -35,60 +51,74 @@ export default function UserForm(
     if (name) setState({ ...user, name, email, gender, status, id });
   }, [name]);
   return (
-    <div className="user_form">
-      <h1>{children}</h1>
-      <form onSubmit={userSubmitHandler}>
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={user.name}
-          onChange={handleChange}
-          placeholder="Name"
-        />
-        <label htmlFor="email">Email</label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          value={user.email}
-          onChange={handleChange}
-          placeholder="Email"
-        />
-        <label>Gender</label>
-        <span>
-          <label htmlFor="male">Male</label>
-          <input
-            type="radio"
-            id="male"
-            name="gender"
-            value="male"
+    <IonCard>
+      <IonCardHeader>Add User</IonCardHeader>
+      <IonCardContent>
+        <form onSubmit={userSubmitHandler}>
+          <IonItem>
+            <IonLabel position="floating">Name</IonLabel>
+            <IonInput
+              id="name"
+              name="name"
+              value={user.name}
+              onIonChange={handleChange}
+              placeholder="Name"
+            ></IonInput>
+          </IonItem>
+          <IonItem>
+            <IonLabel position="floating">Email</IonLabel>
+            <IonInput
+              id="email"
+              name="email"
+              value={user.email}
+              onIonChange={handleChange}
+              placeholder="Email"
+            ></IonInput>
+          </IonItem>
+
+          <IonRadioGroup value="male" onIonChange={handleChange}>
+            <IonItem>
+              <IonLabel>Male</IonLabel>
+              <IonRadio
+                id="male"
+                name="gender"
+                value="male"
+                checked={user.gender === 'male'}
+                slot="send"
+              ></IonRadio>
+            </IonItem>
+            <IonItem>
+              <IonLabel>Female</IonLabel>
+              <IonRadio
+                id="female"
+                name="gender"
+                value="female"
+                checked={user.gender === 'female'}
+                slot="send"
+              ></IonRadio>
+            </IonItem>
+          </IonRadioGroup>
+
+          <label htmlFor="status">Status</label>
+          <select
+            id="status"
+            name="status"
+            value={user.status}
             onChange={handleChange}
-            checked={user.gender === 'male'}
-          />
-          <label htmlFor="female">Female</label>
-          <input
-            type="radio"
-            id="female"
-            name="gender"
-            value="female"
-            onChange={handleChange}
-            checked={user.gender === 'female'}
-          />
-        </span>
-        <label htmlFor="status">Status</label>
-        <select
-          id="status"
-          name="status"
-          value={user.status}
-          onChange={handleChange}
-        >
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
-        </select>
-        <button>{formState}</button>
-      </form>
-    </div>
+          >
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+          <IonButton expand="block">
+            {formState}
+            {formState == 'Save' ? (
+              <IonIcon icon={create} slot="end"></IonIcon>
+            ) : (
+              <IonIcon icon={send} slot="end"></IonIcon>
+            )}
+          </IonButton>
+        </form>
+      </IonCardContent>
+    </IonCard>
   );
 }
