@@ -66,8 +66,8 @@ export default function UserForm({ name, email, gender, status, id }) {
             <IonInput
               id="name"
               name="name"
-              value={user.name}
-              onIonChange={(e) => handleChange(e)}
+              value={user.name ? user.name : 'Name'}
+              onIonChange={handleChange}
               placeholder="Name"
             ></IonInput>
           </IonItem>
@@ -76,16 +76,17 @@ export default function UserForm({ name, email, gender, status, id }) {
             <IonInput
               id="email"
               name="email"
-              value={user.email}
-              onIonChange={(e) => handleChange(e)}
+              value={user.email ? user.email : 'Email'}
+              onIonChange={handleChange}
               placeholder="Email"
             ></IonInput>
           </IonItem>
           <IonItem>
             <IonLabel>Gender</IonLabel>
             <IonRadioGroup
-              value={user.gender}
-              onIonChange={(e) => handleChange(e)}
+              allow-empty-selection={true}
+              value={user.gender ? user.gender : 'male'}
+              onIonChange={handleChange}
               name="gender"
             >
               <IonItem>
@@ -114,7 +115,7 @@ export default function UserForm({ name, email, gender, status, id }) {
               onIonCancel={(e) => handleChange(e)}
               onIonDismiss={(e) => handleChange(e)}
               name="status"
-              value={user.status}
+              value={user.status ? user.status : 'active'}
             >
               <IonSelectOption value="active">Active</IonSelectOption>
               <IonSelectOption value="inactive">Inactive</IonSelectOption>

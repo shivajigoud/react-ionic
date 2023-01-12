@@ -28,16 +28,28 @@ setupIonicReact();
 export default function App() {
   return (
     <IonApp>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle className="ion-text-center">{TOPHEADER}</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="ion-padding">
-        <FormContextProvider>
-          <RouterProvider router={router}></RouterProvider>
-        </FormContextProvider>
-      </IonContent>
+      <IonMenu contentId="main-content">
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Menu Content</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className="ion-padding">
+          This is the menu content.
+        </IonContent>
+      </IonMenu>
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle className="ion-text-center">{TOPHEADER}</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className="ion-padding">
+          <FormContextProvider>
+            <RouterProvider router={router}></RouterProvider>
+          </FormContextProvider>
+        </IonContent>
+      </IonPage>
     </IonApp>
   );
 }
