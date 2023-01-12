@@ -4,7 +4,7 @@ import { CREATE_USER, UPDATE_USER } from '../actions/actions';
 import useForm from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-export default function UserForm({ name, email, gender, status, id }) {
+export default function UserForm({ name, email, gender, status, id, ...rest }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setState] = useState({
