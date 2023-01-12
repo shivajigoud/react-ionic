@@ -20,10 +20,7 @@ import {
   IonRadioGroup,
 } from '@ionic/react';
 
-export default function UserForm(
-  { name, email, gender, status, id },
-  { children }
-) {
+export default function UserForm({ name, email, gender, status, id }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setState] = useState({
@@ -76,24 +73,24 @@ export default function UserForm(
             ></IonInput>
           </IonItem>
 
-          <IonRadioGroup value="male" onIonChange={handleChange}>
+          <IonRadioGroup
+            allow-empty-selection={true}
+            value={user.gender ? user.gender : 'male'}
+            onIonChange={(e) => handleChange(e)}
+          >
             <IonItem>
               <IonLabel>Male</IonLabel>
               <IonRadio
-                id="male"
-                name="gender"
                 value="male"
-                checked={user.gender === 'male'}
+                // checked={user.gender === 'male'}
                 slot="send"
               ></IonRadio>
             </IonItem>
             <IonItem>
               <IonLabel>Female</IonLabel>
               <IonRadio
-                id="female"
-                name="gender"
                 value="female"
-                checked={user.gender === 'female'}
+                // checked={user.gender === 'female'}
                 slot="send"
               ></IonRadio>
             </IonItem>
