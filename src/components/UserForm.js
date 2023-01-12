@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { IonButton, IonIcon } from '@ionic/react';
+import { play as playIcon } from 'ionicons/icons';
 import utils from '../utils/utils';
 import { CREATE_USER, UPDATE_USER } from '../actions/actions';
 import useForm from '../hooks/useForm';
@@ -84,7 +86,11 @@ export default function UserForm({ name, email, gender, status, id }) {
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
         </select>
-        <button>{formState}</button>
+        {/* <button>{formState}</button> */}
+        <IonButton type="submit" expand="block" color="primary">
+          {formState}
+          <IonIcon icon={playIcon} slot="end" />
+        </IonButton>
       </form>
     </div>
   );
