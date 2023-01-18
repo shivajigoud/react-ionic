@@ -39,10 +39,8 @@ export default function App() {
           <IonToolbar color="tertiary">
             <IonTitle>
               <IonMenuToggle>
-                <IonButton color="tertiary">
-                  <IonIcon icon={arrowBackCircle} slot="end">
-                   
-                  </IonIcon>
+                <IonButton color="tertiary" expand="block">
+                  <IonIcon icon={arrowBackCircle} slot="end"></IonIcon>
                   Menu Content
                 </IonButton>
               </IonMenuToggle>
