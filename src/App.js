@@ -38,11 +38,10 @@ export default function App() {
         <IonHeader>
           <IonToolbar color="tertiary">
             <IonTitle>
-              Menu Content
               <IonMenuToggle>
                 <IonButton color="tertiary">
                   <IonIcon icon={arrowBackCircle} slot="end">
-                  
+                    Menu Content
                   </IonIcon>
                 </IonButton>
               </IonMenuToggle>

@@ -27,11 +27,11 @@ export default function UserForm({ name, email, gender, status, id }) {
   const navigate = useNavigate();
   const [pageTitle, setPageTitle] = useState('Add User');
   const [user, setState] = useState({
-    name: '',
-    email: '',
-    gender: '',
-    status: '',
-    id: utils.getNewID(1200),
+    name: name || '',
+    email: email || '',
+    gender: gender || '',
+    status: status || '',
+    id: id || utils.getNewID(1200),
   });
   const { formState, setFormState } = useForm();
   const handleChange = (e) => {
@@ -52,7 +52,7 @@ export default function UserForm({ name, email, gender, status, id }) {
   };
   useEffect(() => {
     if (name) {
-      setState({ name, email, gender, status, id });
+      // setState({ name, email, gender, status, id });
       setPageTitle(`Editing ${name}`);
     }
   }, [name]);
@@ -66,7 +66,7 @@ export default function UserForm({ name, email, gender, status, id }) {
             <IonInput
               id="name"
               name="name"
-              value={user.name ? user.name : 'Name'}
+              value={user.name}
               onIonChange={handleChange}
               placeholder="Name"
             ></IonInput>
@@ -76,7 +76,7 @@ export default function UserForm({ name, email, gender, status, id }) {
             <IonInput
               id="email"
               name="email"
-              value={user.email ? user.email : 'Email'}
+              value={user.email}
               onIonChange={handleChange}
               placeholder="Email"
             ></IonInput>
@@ -85,7 +85,7 @@ export default function UserForm({ name, email, gender, status, id }) {
             <IonLabel>Gender</IonLabel>
             <IonRadioGroup
               allow-empty-selection={true}
-              value={user.gender ? user.gender : 'male'}
+              value={user.gender}
               onIonChange={handleChange}
               name="gender"
             >
@@ -115,7 +115,7 @@ export default function UserForm({ name, email, gender, status, id }) {
               onIonCancel={(e) => handleChange(e)}
               onIonDismiss={(e) => handleChange(e)}
               name="status"
-              value={user.status ? user.status : 'active'}
+              value={user.status}
             >
               <IonSelectOption value="active">Active</IonSelectOption>
               <IonSelectOption value="inactive">Inactive</IonSelectOption>

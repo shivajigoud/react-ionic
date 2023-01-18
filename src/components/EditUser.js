@@ -8,7 +8,7 @@ import UserForm from './UserForm';
 export default function AddUser() {
   let { id } = useParams();
   const users = useSelector((state) => state.users);
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState({});
   const { formState, setFormState } = useForm();
   const dispatch = useDispatch();
 
@@ -26,5 +26,13 @@ export default function AddUser() {
       setFormState('Submit');
     };
   }, []);
-  return <UserForm {...currentUser}></UserForm>;
+  return (
+    <>
+      {currentUser.hasOwnProperty('name') ? (
+        <UserForm {...currentUser}></UserForm>
+      ) : (
+        <div>...Loading</div>
+      )}
+    </>
+  );
 }
