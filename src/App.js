@@ -11,7 +11,11 @@ import {
   IonTitle,
   IonButtons,
   IonMenuButton,
+  IonMenuToggle,
+  IonButton,
+  IonIcon,
 } from '@ionic/react';
+import { create, send, arrowBackCircle } from 'ionicons/icons';
 import '@ionic/react/css/core.css';
 import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
@@ -33,14 +37,24 @@ export default function App() {
       <IonMenu contentId="main-content">
         <IonHeader>
           <IonToolbar color="tertiary">
-            <IonTitle>Menu Content</IonTitle>
+            <IonTitle>
+              Menu Content
+              <IonMenuToggle>
+                <IonButton color="tertiary">
+                  <IonIcon icon={arrowBackCircle} slot="end">
+                  
+                  </IonIcon>
+                </IonButton>
+              </IonMenuToggle>
+            </IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding">
           This is the menu content.
         </IonContent>
       </IonMenu>
-      <IonPage>
+
+      <IonPage id="main-content">
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
