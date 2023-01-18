@@ -41,8 +41,9 @@ export default function App() {
               <IonMenuToggle>
                 <IonButton color="tertiary">
                   <IonIcon icon={arrowBackCircle} slot="end">
-                    Menu Content
+                   
                   </IonIcon>
+                  Menu Content
                 </IonButton>
               </IonMenuToggle>
             </IonTitle>
